@@ -7,10 +7,6 @@ Active::Active(Student* context) : _context(context) {};
 void Active::Handle(){
 	_context->setStatus( new Lock(_context) );
 }
-
-void Active::printMyState(){
-	printf("ACTIVE\n");
-}
 string Active::getState(){
 	string state = "ACTIVE";
 	return state;

@@ -1,15 +1,21 @@
 #pragma hdrstop   
 #include "student.h"
 #include "Active.h"
+#include "Lock.h"
 
-Student::Student(int id, string name, vector<string> courses, int points, string pass){
+Student::Student(int id, string name, vector<string> courses, int points, string pass, int state){
 	this->id = id;
 	this->name = name;
 	this->complete_courses = courses;
 	this->points = points;
 	this->pass = pass;
-	_status = new Active(this);
-
+	if (state){
+		_status = new Active(this);
+	}
+	else{
+		_status = new Lock(this);
+	}
+	
 }
 Student::Student(){
 	this->id = 0;
@@ -17,8 +23,8 @@ Student::Student(){
 	this->points = 0;
 	this->pass = "";
 	_status = new Active(this);
-
 }
+
 //Getters
 int Student::getId(){
 	return this->id;
@@ -52,7 +58,7 @@ void Student::setPoints(int points){
 	this->points = points;
 }
 void Student::setStatus(State* status){
-	_status = status;
+	this->_status = status;
 }
 
 //other functions
@@ -66,26 +72,20 @@ void Student::display(){
 	}
 	cout << "\nPoints: " << this->getPoints()<< endl;
 	cout << "Pass: " << this->getPass() << endl;
-	this->_status->Handle();
-	this->_status->printMyState();
+	cout << "State: " << this->_status->getState() << endl << endl;
 }
 
 void Student::Handle(){
-	_status->Handle();
+	this->_status->Handle();
 }
 
-void Student::printMyState(){
-	_status->printMyState();
-}
-
-void Student::operator=(const Student &S)
-{
+void Student::operator=(const Student &S){
 	this->id = S.id;
 	this->name = S.name;
 	this->complete_courses = S.complete_courses;
 	this->points = S.points;
 	this->pass = S.pass;
-	_status = S._status;
+	this->_status = S._status;
 }
 
 #pragma package(smart_init)

@@ -19,6 +19,12 @@ void main(){
 	vector<Course> C = db->getCourseList();
 	//
 	CalculateCourseBid* R;
+
+	Student shani;
+	shani.display();
+	shani.Handle();
+	shani.display();
+
 	for (;;){
 		cout << "\nchoose a file:\n 1) input2_1.txt\n 2) input2_2.txt\n 3) Registration Terminal\n 4) Calculate CourseBid\n 5) Veiw CourseBid resutls\n";
 		int x;
@@ -61,7 +67,9 @@ void main(){
 					}
 					if (i == 4){
 						cout << "You have been LOCKED!\n";
-						temp.Handle(); //suppose so swich state to lock..
+						temp.Handle(); //switch state to LOCK
+						//temp.display();
+						cout<< temp.getStatus();
 					}
 					else{
 						cout << "Hello " << temp.getName() << "!\nYou have " << temp.getPoints() << " points.\nAvailable courses:\n";
@@ -75,8 +83,6 @@ void main(){
 							}
 						}
 						db->updateStudent(temp);
-						C[0].setName("zibi");
-						db->updateCourse(C[0]);
 					}
 				}else{
 					cout << "Sorry, your account is locked. please go to the secritary to unlock it.\n";

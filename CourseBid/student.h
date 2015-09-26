@@ -18,7 +18,7 @@ private:
 
 public:
 	Student();
-	Student(int id, string name, vector<string> courses, int points, string pass);
+	Student(int id, string name, vector<string> courses, int points, string pass, int state);
 	//Getters
 	int getId();
 	string getName();
@@ -35,7 +35,6 @@ public:
 	//other functions
 	void display();
 	void Handle();
-	void printMyState();
 	void operator=(const Student &S);
 };
 

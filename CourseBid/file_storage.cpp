@@ -42,7 +42,7 @@ FileStorage::FileStorage(string file_name){
 	//read students
 	for (int i = 0; i < m; i++){	
 	
-		int id, points;
+		int id, points, state;
 		string pass, name, complete;
 		vector<string> Clist_temp;
 
@@ -51,9 +51,9 @@ FileStorage::FileStorage(string file_name){
 			Clist_temp.push_back(complete);
 			inFile >> complete;
 		}
-		inFile >> points;
+		inFile >> points >> state;
 
-		Student S(id, name, Clist_temp, points, pass);
+		Student S(id, name, Clist_temp, points, pass, state);
 		Slist.push_back(S);
 
 	}
@@ -84,7 +84,15 @@ void FileStorage::updateStudent(Student s){
 	for (vector<string>::size_type i = 0; i != s.getCompleteCourses().size(); i++) {
 		replace_string += s.getCompleteCourses()[i] + " ";
 	}
-	replace_string += " $ " + to_string(s.getPoints()+6); //+6 points!!!
+	replace_string += " $ " + to_string(s.getPoints()) + " " ;
+
+	string state = s.getStatus();
+	if (state == "ACTIVE"){
+		replace_string += " 1 ";
+	}
+	else{
+		replace_string += " 0 ";
+	}
 
 	string inbuf;
 	fstream input_file(this->file_name, ios::in);
@@ -116,7 +124,7 @@ void FileStorage::updateStudent(Student s){
 	remove(newname);
 	result = rename(oldname, newname);
 	if (result == 0)
-		puts("File successfully updated\n");
+		puts("DB File successfully updated\n");
 	else
 		perror("Student update error: Error renaming file\n");
 }
@@ -162,7 +170,7 @@ void FileStorage::updateCourse(Course c){
 	remove(newname);
 	result = rename(oldname, newname);
 	if (result == 0)
-		puts("File successfully updated\n");
+		puts("DB File successfully updated\n");
 	else
 		perror("Course update error: Error renaming file\n");
 }
