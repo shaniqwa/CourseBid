@@ -1,0 +1,2 @@
+27
+zlib glib enchant hexchat 
