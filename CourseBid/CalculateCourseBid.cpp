@@ -42,6 +42,10 @@ CalculateCourseBid::CalculateCourseBid(string file_name){
 	for (int i = 0; i < m*n; ++i){
 		int Cij;
 		inFile >> Cij;
+		if (Cij > 100){
+			//skip id 
+			inFile >> Cij;
+		}
 		//build obj expr
 		expr += Cij*v[i];
 	}
@@ -50,11 +54,19 @@ CalculateCourseBid::CalculateCourseBid(string file_name){
 	lp.obj(expr);
 	lp.solve();
 
-	//print result
+	//print result to bid_result.txt
+	ofstream outFile;
+	outFile.open("bid_result.txt", ios_base::app);
+
+	//Check for Error
+	if (outFile.fail()){
+		cerr << "Error Opening File";
+		exit(1);
+	}
 	for (int i = 0; i < m; ++i){
 		for (int j = 0; j < n; ++j){
-			cout << lp.primal(v[i*n+j]) <<"   ";
+			outFile << lp.primal(v[i*n + j]) << "   ";
 		}
-		cout << endl;
+		outFile << endl;
 	}
 }

@@ -5,9 +5,10 @@ FileStorage::FileStorage(string file_name){
 	this->file_name = file_name;
 	ifstream inFile;
 	inFile.open(file_name);
+	ofstream outFile("bid.txt");
 
 	//Check for Error
-	if (inFile.fail()){
+	if (inFile.fail() || outFile.fail()){
 		cerr << "Error Opening File";
 		exit(1);
 	}
@@ -16,6 +17,7 @@ FileStorage::FileStorage(string file_name){
 	int m, n;
 
 	inFile >> m >> n;
+	outFile << m << " " << n << endl;
 	//read courses
 	for (int i = 0; i < n; ++i){
 		int id, max;
@@ -24,21 +26,26 @@ FileStorage::FileStorage(string file_name){
 
 		inFile >> id >> name >> des >> pre;
 		while (pre != "$"){
-			Clist_temp.push_back(pre);
-			inFile >> pre;
+			if (pre == "none"){
+				inFile >> pre;
+			}
+			else{
+				Clist_temp.push_back(pre);
+				inFile >> pre;
+			}
 		}
 		inFile >> max;
-
+		outFile << max << " ";
 		Course C(id, name, des, Clist_temp, max);
 
 		Clist.push_back(C);
 	
 	}
 
-	//for (vector<Course>::size_type i = 0; i != Clist.size(); i++) {
-	//	Clist[i].display();
-	//	cout << endl;
-	//}
+	for (vector<Course>::size_type i = 0; i != Clist.size(); i++) {
+		Clist[i].display();
+		cout << endl;
+	}
 
 
 	//read students
@@ -65,6 +72,7 @@ FileStorage::FileStorage(string file_name){
 	}
 
 	inFile.close();
+	outFile.close();
 }
 
 FileStorage::~FileStorage(){

@@ -79,7 +79,6 @@ void Student::display(){
 	}
 	cout << "\nPoints: " << this->getPoints()<< endl;
 	cout << "Pass: " << this->getPass() << endl;
-	cout << "isActive: " << this->getState() <<endl;
 	cout << "State: " << this->_status->getState() << endl << endl;
 
 }
@@ -95,7 +94,7 @@ Student& Student::operator=(const Student &S){
 		(*this).complete_courses = S.complete_courses;
 		(*this).points = S.points;
 		(*this).pass = S.pass;
-		cout<<S.state;
+
 		if (S.state){
 			(*this)._status = new Active(this);
 		}
