@@ -35,10 +35,12 @@ FileStorage::FileStorage(string file_name){
 	
 	}
 
-	for (vector<Course>::size_type i = 0; i != Clist.size(); i++) {
-		Clist[i].display();
-		cout << endl;
-	}
+	//for (vector<Course>::size_type i = 0; i != Clist.size(); i++) {
+	//	Clist[i].display();
+	//	cout << endl;
+	//}
+
+
 	//read students
 	for (int i = 0; i < m; i++){	
 	
@@ -52,7 +54,6 @@ FileStorage::FileStorage(string file_name){
 			inFile >> complete;
 		}
 		inFile >> points >> state;
-
 		Student S(id, name, Clist_temp, points, pass, state);
 		Slist.push_back(S);
 
@@ -70,11 +71,11 @@ FileStorage::~FileStorage(){
 	cout << "\nFileStorage destructor\n";
 }
 
-vector<Student> FileStorage::getStudentList(){
+vector<Student>& FileStorage::getStudentList(){
 	return this->Slist;
 }
 
-vector<Course> FileStorage::getCourseList(){
+vector<Course>& FileStorage::getCourseList(){
 	return this->Clist;
 }
 

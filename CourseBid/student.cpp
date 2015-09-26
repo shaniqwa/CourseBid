@@ -9,6 +9,7 @@ Student::Student(int id, string name, vector<string> courses, int points, string
 	this->complete_courses = courses;
 	this->points = points;
 	this->pass = pass;
+	this->state = state;
 	if (state){
 		_status = new Active(this);
 	}
@@ -44,6 +45,9 @@ string Student::getPass(){
 string Student::getStatus(){
 	return this->_status->getState();
 }
+int Student::getState(){
+	return this->state;
+}
 //Setters
 void Student::setId(int id){
 	this->id = id;
@@ -60,6 +64,9 @@ void Student::setPoints(int points){
 void Student::setStatus(State* status){
 	this->_status = status;
 }
+void Student::setState(int state){
+	this->state = state;
+}
 
 //other functions
 void Student::display(){
@@ -72,20 +79,32 @@ void Student::display(){
 	}
 	cout << "\nPoints: " << this->getPoints()<< endl;
 	cout << "Pass: " << this->getPass() << endl;
+	cout << "isActive: " << this->getState() <<endl;
 	cout << "State: " << this->_status->getState() << endl << endl;
+
 }
 
 void Student::Handle(){
 	this->_status->Handle();
 }
 
-void Student::operator=(const Student &S){
-	this->id = S.id;
-	this->name = S.name;
-	this->complete_courses = S.complete_courses;
-	this->points = S.points;
-	this->pass = S.pass;
-	this->_status = S._status;
+Student& Student::operator=(const Student &S){
+	if (this != &S) {
+		(*this).id = S.id;
+		(*this).name = S.name;
+		(*this).complete_courses = S.complete_courses;
+		(*this).points = S.points;
+		(*this).pass = S.pass;
+		cout<<S.state;
+		if (S.state){
+			(*this)._status = new Active(this);
+		}
+		else{
+			(*this)._status = new Lock(this);
+		}
+		
+	}
+	return *this;
 }
 
 #pragma package(smart_init)

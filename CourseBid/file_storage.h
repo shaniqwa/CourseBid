@@ -23,8 +23,8 @@ public:
 	FileStorage(string file_name);
 	~FileStorage();
 
-	vector<Student> getStudentList();
-	vector<Course> getCourseList();
+	vector<Student>& getStudentList();
+	vector<Course>& getCourseList();
 	void updateStudent(Student s);
 	void updateCourse(Course c);
 };

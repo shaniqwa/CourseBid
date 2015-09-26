@@ -20,10 +20,7 @@ void main(){
 	//
 	CalculateCourseBid* R;
 
-	Student shani;
-	shani.display();
-	shani.Handle();
-	shani.display();
+
 
 	for (;;){
 		cout << "\nchoose a file:\n 1) input2_1.txt\n 2) input2_2.txt\n 3) Registration Terminal\n 4) Calculate CourseBid\n 5) Veiw CourseBid resutls\n";
@@ -44,6 +41,8 @@ void main(){
 					for (vector<Student>::size_type i = 0; i != S.size(); i++) {
 						if (S[i].getId() == id){
 							temp = S[i];
+							cout<<temp.getPass();
+							cout << "name: " <<temp.getName() <<endl;
 							flag = 0;
 							break;
 						}
@@ -69,7 +68,8 @@ void main(){
 						cout << "You have been LOCKED!\n";
 						temp.Handle(); //switch state to LOCK
 						//temp.display();
-						cout<< temp.getStatus();
+						db->updateStudent(temp);
+						system("PAUSE");
 					}
 					else{
 						cout << "Hello " << temp.getName() << "!\nYou have " << temp.getPoints() << " points.\nAvailable courses:\n";

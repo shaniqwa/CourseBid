@@ -15,6 +15,7 @@ private:
 	int points;
 	string pass;
 	State* _status;
+	int state;
 
 public:
 	Student();
@@ -26,16 +27,18 @@ public:
 	int getPoints();
 	string getPass();
 	string getStatus();
+	int getState();
 	//Setters
 	void setId(int id);
 	void setName(string name);
 	void setCompleteCourses(vector<string> courses);
 	void setPoints(int points);
 	void setStatus(State* status);
+	void setState(int state);
 	//other functions
 	void display();
 	void Handle();
-	void operator=(const Student &S);
+	Student& operator=(const Student &S);
 };
 
 #endif;
