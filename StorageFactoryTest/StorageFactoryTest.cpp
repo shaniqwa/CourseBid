@@ -30,13 +30,18 @@ namespace StorageFactoryTest
 
 				}
 			}storageMock;
-			StorageFactory DBfactory;
-			
 
-			//StorageFactory::DataStorage p = StorageFactory::DataStorage(FILE_STORAGE, "data.txt");
-			//storageMock *realType = dynamic_cast< storageMock* >(p);
-			//TS_ASSERT(NULL != realType); // if you use cxxtest
-			Assert::AreEqual<IStorage>(storageMock, *DBfactory.DataStorage(FILE_STORAGE, "data.txt"));
+
+			//Common header
+			class StorageFactory {
+			public:
+				void useObject(IStorage & object) {
+					object.getStudentList();
+				}
+			};
+
+			StorageFactory toTest;
+			toTest.useObject(storageMock);
 		}
 
 	};
