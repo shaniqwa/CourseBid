@@ -11,12 +11,17 @@ Student::Student(int id, string name, vector<string> courses, int points, string
 	this->pass = pass;
 	this->state = state;
 	if (state){
-		_status = new Active(this);
+		try{
+			_status = new Active(this);
+		}
+		catch (exception& e){}
 	}
 	else{
-		_status = new Lock(this);
+		try{
+			_status = new Lock(this);
+		}
+		catch (exception& e){}
 	}
-	
 }
 Student::Student(){
 	this->id = 0;

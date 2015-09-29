@@ -9,6 +9,14 @@
 using namespace lemon;
 using namespace std;
 
+
+class myexception : public exception{
+	virtual const char* what() const throw(){
+		return "No such ID exsist!\n";
+	}
+} myex;
+
+
 void main(){
 	//create DB factory
 	StorageFactory* DBfactory = new StorageFactory();
@@ -42,8 +50,16 @@ void main(){
 					}
 				}
 				if (flag == 1){
-					cout << "no such ID \n";
+					try
+					{
+						throw myex;
+					}
+					catch (exception& e)
+					{
+						cout << e.what() << '\n';
+					}
 				}
+				
 			}
 			if (temp.getStatus() == "ACTIVE"){
 				int i = 1;
@@ -152,7 +168,14 @@ void main(){
 					}
 				}
 				if (flag == 1){
-					cout << "no such ID \n";
+					try
+					{
+						throw myex;
+					}
+					catch (exception& e)
+					{
+						cout << e.what() << '\n';
+					}
 				}
 			}
 			if (temp.getStatus() == "ACTIVE"){
@@ -171,7 +194,6 @@ void main(){
 				if (i == 4){
 					cout << "You have been LOCKED!\n";
 					temp.Handle(); //switch state to LOCK
-					//temp.display();
 					db->updateStudent(temp);
 					system("PAUSE");
 				}

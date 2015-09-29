@@ -7,7 +7,7 @@ IStorage* StorageFactory::DataStorage(db_type storage_type, string db_name){
 			db = new FileStorage(db_name);
 			break;
 		default:
-			db = NULL;
+			//db = NULL;
 			break;
 	}
 	return db;

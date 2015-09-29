@@ -16,10 +16,8 @@ private:
 	string file_name;
 	vector<Course> Clist;
 	vector<Student> Slist;
-	static FileStorage *s_instance;
 	
 public:
-	static FileStorage *instance();
 	FileStorage(string file_name);
 	~FileStorage();
 
