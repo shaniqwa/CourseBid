@@ -1,13 +1,46 @@
 3 4
 
-100 Data-Structure  description1 Algebra $ 2
-200 Intro-to-Algorithems description2 Data-Structure $ 2
+100 Data-Structure Des Algebra  $ 2
+200 Intro-to-Algorithems description2 Data-Structure  $ 1
 300 C# description3 none $ 1
 400 Algebra description4 none $ 4
 
-111 shani123 shani Algebra  $ 0  1 
-222 viki123 viktoria C#  $ 0  1 
-333 raf123 rafael Algebra Data-Structure  $ 0  1 
+111 shani123 shani Algebra  $ 123  0 
+222 viki123 viktoria C#  $ 130  1 
+333 raf123 rafael Algebra Data-Structure  $ 152  1 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
