@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CourseBid", "CourseBid\Cour
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StorageFactoryTest", "StorageFactoryTest\StorageFactoryTest.vcxproj", "{0DA571FF-225A-4901-863D-417D5C1EACCF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StudentTest", "StudentTest\StudentTest.vcxproj", "{BEBD630E-7BE3-4878-8C63-74B142061F49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,10 @@ Global
 		{0DA571FF-225A-4901-863D-417D5C1EACCF}.Debug|Win32.Build.0 = Debug|Win32
 		{0DA571FF-225A-4901-863D-417D5C1EACCF}.Release|Win32.ActiveCfg = Release|Win32
 		{0DA571FF-225A-4901-863D-417D5C1EACCF}.Release|Win32.Build.0 = Release|Win32
+		{BEBD630E-7BE3-4878-8C63-74B142061F49}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BEBD630E-7BE3-4878-8C63-74B142061F49}.Debug|Win32.Build.0 = Debug|Win32
+		{BEBD630E-7BE3-4878-8C63-74B142061F49}.Release|Win32.ActiveCfg = Release|Win32
+		{BEBD630E-7BE3-4878-8C63-74B142061F49}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

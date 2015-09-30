@@ -149,7 +149,15 @@ void main(){
 			
 		//calculate CourseBid
 		case 2: {
-			R = new CalculateCourseBid("bid.txt"); break;
+			cout << "Did every student finished his bid? \n1) yes\n2) no\n";
+			int flag;
+			cin >> flag;
+			cin.clear();
+			cin.ignore(100, '\n');
+			if (flag==1){
+				R = new CalculateCourseBid("bid.txt");
+			}
+			break;
 		}
 		
 		case 3: {
@@ -227,7 +235,7 @@ void main(){
 		}
 		case 4: {
 		//secretary terminal
-			cout << "Menu\n1) Edid course details\n2) Edit student details\n3) Unlock student\n4) Add new course\n5) Add new student\n6) Remove course\n7) Remove student\n";
+			cout << "Menu\n1) Edid course details\n2) Edit student details\n3) Unlock student\n";
 			int x;
 			cin >> x;
 			switch (x){
@@ -274,9 +282,79 @@ void main(){
 						"there is no course with that id.\n";
 					}
 				}
-				break; }
-			case 2:{ break; }
-			case 3: {break;  }
+				break; }//close case 1
+			case 2:{ 
+				int id;
+				cout << "Enter student id: ";
+				cin >> id;
+				cin.clear();
+				cin.ignore(100, '\n');
+				for (vector<Student>::size_type i = 0; i != S.size(); i++) {
+					if (S[i].getId() == id){
+						temp = S[i];
+						temp.display();
+						f = 1;
+						cout << "what would you like to edit?\n1) Name \n2) Password \n3) Bid-Points\n ";
+						int sub;
+						cin >> sub;
+						switch (sub){
+						case 1:{
+							string name;
+							cout << "Enter new name: ";
+							cin >> name;
+							temp.setName(name);
+							db->updateStudent(temp);
+							break; }
+						case 2: {
+							string pass;
+							cout << "Enter new password: ";
+							cin >> pass;
+							temp.setPassword(pass);
+							db->updateStudent(temp);
+							break;  }
+						case 3:{
+							int points_to_add;
+							cout << "Enter new number of points: ";
+							cin >> points_to_add;
+							temp.setPoints(points_to_add);
+							db->updateStudent(temp);
+							break; }
+						case 4: {break;  }
+						default: { break; }
+						}
+					}
+					if (f){
+						"there is no course with that id.\n";
+					}
+				}
+				break; }//close case 2
+			
+			case 3: {
+				//Unlock student
+				int id;
+				cout << "Enter student id: ";
+				cin >> id;
+				cin.clear();
+				cin.ignore(100, '\n');
+				for (vector<Student>::size_type i = 0; i != S.size(); i++) {
+					if (S[i].getId() == id){
+						temp = S[i];
+						f = 1;
+						if (temp.getState()==1){
+							cout << S[i].getName() + " state is already ACTIVE\n";
+						}
+						else{
+							temp.Handle();
+							cout << "user unlocked\n";
+							temp.display();
+							db->updateStudent(temp);
+						}
+					}
+					if (f){
+						"there is no course with that id.\n";
+					}
+				}
+				break;  }//close case 3
 			default: { break; }
 			}
 			break;

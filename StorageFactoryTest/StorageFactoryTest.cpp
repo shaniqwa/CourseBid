@@ -32,7 +32,6 @@ namespace StorageFactoryTest
 			}storageMock;
 
 
-			//Common header
 			class StorageFactory {
 			public:
 				void useObject(IStorage & object) {
@@ -41,6 +40,7 @@ namespace StorageFactoryTest
 			};
 
 			StorageFactory toTest;
+
 			toTest.useObject(storageMock);
 		}
 

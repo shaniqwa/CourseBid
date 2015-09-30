@@ -42,10 +42,10 @@ FileStorage::FileStorage(string file_name){
 	
 	}
 
-	for (vector<Course>::size_type i = 0; i != Clist.size(); i++) {
-		Clist[i].display();
-		cout << endl;
-	}
+	//for (vector<Course>::size_type i = 0; i != Clist.size(); i++) {
+	//	Clist[i].display();
+	//	cout << endl;
+	//}
 
 
 	//read students
@@ -66,10 +66,10 @@ FileStorage::FileStorage(string file_name){
 
 	}
 
-	for (vector<Student>::size_type i = 0; i != Slist.size(); i++) {
-		Slist[i].display();
-		cout << endl;
-	}
+	//for (vector<Student>::size_type i = 0; i != Slist.size(); i++) {
+	//	Slist[i].display();
+	//	cout << endl;
+	//}
 
 	inFile.close();
 	outFile.close();

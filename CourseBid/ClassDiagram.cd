@@ -67,13 +67,6 @@
   </Class>
   <Class Name="StorageFactory">
     <Position X="14" Y="0.75" Width="2" />
-    <NestedTypes>
-      <Typedef Name="StorageFactory::ExamplePtrType" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>StorageFactory.h</NewMemberFileName>
-        </TypeIdentifier>
-      </Typedef>
-    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>StorageFactory.h</FileName>

@@ -33,6 +33,7 @@ public:
 	void setName(string name);
 	void setCompleteCourses(vector<string> courses);
 	void setPoints(int points);
+	void setPassword(string pass);
 	void setStatus(State* status);
 	void setState(int state);
 	//other functions

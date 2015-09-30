@@ -66,6 +66,9 @@ void Student::setCompleteCourses(vector<string> courses){
 void Student::setPoints(int points){
 	this->points = points;
 }
+void Student::setPassword(string pass){
+	this->pass = pass;
+}
 void Student::setStatus(State* status){
 	this->_status = status;
 }
@@ -99,6 +102,7 @@ Student& Student::operator=(const Student &S){
 		(*this).complete_courses = S.complete_courses;
 		(*this).points = S.points;
 		(*this).pass = S.pass;
+		(*this).state = S.state;
 
 		if (S.state){
 			(*this)._status = new Active(this);
